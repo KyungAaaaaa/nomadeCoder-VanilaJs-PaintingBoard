@@ -1,4 +1,5 @@
 const canvas = document.getElementById("jaCanvas");
+const colors = document.getElementsByClassName("jsColor");
 const ctx=canvas.getContext('2d');
 //canvas에 picxel modifier 사이즈를 줘야함!! 실제 픽셀사이즈
 canvas.width=700;
@@ -30,10 +31,10 @@ function onMouseMove(event) {
     }
 
 }
-function onMouseDown(event){
-painting=true;
-
+function handleColorClick(event){
+ctx.strokeStyle=event.target.style.backgroundColor;
 }
+Array.from(colors).forEach(colors=>colors.addEventListener("click",handleColorClick));
 
 if (canvas) {
     canvas.addEventListener("mousemove", onMouseMove)
